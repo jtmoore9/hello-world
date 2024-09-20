@@ -59,7 +59,6 @@ if (results.length > 0) {
         <tr><td>${min}</td><td>${max}</td><td>${avg}</td><td>${total}</td></tr>
     `;
     summaryDiv.appendChild(SumG);
-} 
-else {
+} else {
     summaryDiv.innerHTML = "<p>No valid results to display.</p>";
 }
