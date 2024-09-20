@@ -1,10 +1,10 @@
 let results = []; 
-const resultDiv = document.getElementById("resultTable");
-const summaryDiv = document.getElementById("summaryTable");
-let resultTable = document.createElement("table");
-let headerRow = resultTable.insertRow();
+const resultDiv = document.getElementById("rt");
+const summaryDiv = document.getElementById("st");
+let rt = document.createElement("table");
+let headerRow = rt.insertRow();
 headerRow.innerHTML = "<th>Number X</th><th>Operator</th><th>Number Y</th><th>Result</th>";
-resultDiv.appendChild(resultTable);
+resultDiv.appendChild(rt);
 
 while (true) {
     let x = prompt("Enter your first number:");
@@ -42,7 +42,7 @@ while (true) {
                 result = "Operation could not be performed";
         }
     }
-    let row = resultTable.insertRow();
+    let row = rt.insertRow();
     row.innerHTML = `<td>${x}</td><td>${operator}</td><td>${y}</td><td>${result}</td>`;
     if (typeof result === "number") {
         results.push(result);
@@ -53,12 +53,12 @@ if (results.length > 0) {
     let max = Math.max(...results);
     let total = results.reduce((acc, val) => acc + val, 0);
     let avg = total / results.length;
-    let summaryTable = document.createElement("table");
-    summaryTable.innerHTML = `
+    let st = document.createElement("table");
+    st.innerHTML = `
         <tr><th>Min</th><th>Max</th><th>Average</th><th>Total</th></tr>
         <tr><td>${min}</td><td>${max}</td><td>${avg}</td><td>${total}</td></tr>
     `;
-    summaryDiv.appendChild(summaryTable);
+    summaryDiv.appendChild(st);
 } else {
     summaryDiv.innerHTML = "<p>No valid results to display.</p>";
 }
