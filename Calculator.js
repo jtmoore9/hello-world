@@ -1,33 +1,27 @@
-let results = []; // Store valid results for summary table
-
-// Get references to the divs where we will insert tables
-const resultDiv = document.getElementById("resultTable");
-const summaryDiv = document.getElementById("summaryTable");
-
-// Create the initial result table structure
-let resultTable = document.createElement("table");
-let headerRow = resultTable.insertRow();
-headerRow.innerHTML = "<th>Number 1</th><th>Operator</th><th>Number 2</th><th>Result</th>";
-resultDiv.appendChild(resultTable); // Append the table to the webpage
+let results = []; 
+const resultDiv = document.getElementById("ResultsG");
+const summaryDiv = document.getElementById("SumG");
+let ResultsG = document.createElement("table");
+let headerRow = ResultsG.insertRow();
+headerRow.innerHTML = "<th>Number X</th><th>Operator</th><th>Number Y</th><th>Result</th>";
+resultDiv.appendChild(ResultsG);
 
 while (true) {
-    // Prompt user for inputs
-    let x = prompt("Enter the first number (x):");
-    if (x === null) break; // Exit loop if user cancels
-    let y = prompt("Enter the second number (y):");
+    let x = prompt("Enter your first number:");
+    if (x === null) break;
+    let y = prompt("Enter your second number:");
     if (y === null) break;
-    let operator = prompt("Enter an operator (+, -, *, /, %):");
+    let operator = prompt("The choice of operations are: (+, -, *, /, %):");
     if (operator === null) break;
 
-    // Convert inputs to numbers
+    //use to convert, Can it be moved? or make user values floats from inputs
     x = parseFloat(x);
     y = parseFloat(y);
-
+    
     let result;
     if (isNaN(x) || isNaN(y)) {
-        result = "Error: Non-numeric input";
+        result = "Your input is invalid";
     } else {
-        // Perform calculation based on the operator
         switch (operator) {
             case '+':
                 result = x + y;
@@ -45,34 +39,27 @@ while (true) {
                 result = x % y;
                 break;
             default:
-                result = "Error: Invalid operator";
+                result = "Operation could not be performed";
         }
     }
-
-    // Add a new row to the result table
-    let row = resultTable.insertRow();
+    let row = ResultsG.insertRow();
     row.innerHTML = `<td>${x}</td><td>${operator}</td><td>${y}</td><td>${result}</td>`;
-
-    // Store valid results for summary table
     if (typeof result === "number") {
         results.push(result);
     }
 }
-
-// Summary Table Calculation
 if (results.length > 0) {
     let min = Math.min(...results);
     let max = Math.max(...results);
     let total = results.reduce((acc, val) => acc + val, 0);
     let avg = total / results.length;
-
-    // Create and append the summary table
-    let summaryTable = document.createElement("table");
-    summaryTable.innerHTML = `
-        <tr><th>Minimum</th><th>Maximum</th><th>Average</th><th>Total</th></tr>
+    let SumG = document.createElement("table");
+    SumG.innerHTML = `
+        <tr><th>Min</th><th>Max</th><th>Average</th><th>Total</th></tr>
         <tr><td>${min}</td><td>${max}</td><td>${avg}</td><td>${total}</td></tr>
     `;
-    summaryDiv.appendChild(summaryTable); // Append summary table to the webpage
-} else {
+    summaryDiv.appendChild(SumG);
+} 
+else {
     summaryDiv.innerHTML = "<p>No valid results to display.</p>";
 }
