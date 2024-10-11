@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Information Form</title>
+  <script src="validation.js"></script>
+  <style>
+    .error-message {
+      color: red;
+    }
+    .invalid-input {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Information Form</h1>
+
+<form onsubmit="return validateInput()" id="infoForm" action="/action_page.php" method="post">
+  <label for="uname">Username:</label><br>
+  <input type="text" id="uname" name="uname" maxlength="12"><br><br>
+
+  <label for="email">Email:</label><br>
+  <input type="text" id="email" name="email"><br><br>
+
+  <label for="phone">Phone Number:</label><br>
+  <input type="text" id="phone" name="phone"><br><br>
+
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password"><br><br>
+
+  <label for="passwordCheck">Password Check:</label><br>
+  <input type="password" id="passwordCheck" name="passwordCheck"><br><br>
+
+  <label>
+    <input type="radio" name="gender" value="male"> Male
+  </label><br>
+
+  <label>
+    <input type="radio" name="gender" value="female"> Female
+  </label><br>
+
+  <label>
+    <input type="radio" name="gender" value="other"> Other
+  </label><br><br>
+
+  <label for="age-group">Age Group:</label>
+  <select id="age-group" name="age-group">
+    <option value="" disabled selected>(blank)</option>
+    <option value="under21">&lt; 21 years old</option>
+    <option value="21-25">21 – 25 years old</option>
+    <option value="26-35">26 – 35 years old</option>
+    <option value="36-50">36 – 50 years old</option>
+    <option value="over50">&gt; 50 years old</option>
+  </select><br><br>
+
+  <label><input type="checkbox" name="music-genre" value="pop"> Pop</label><br>
+  <label><input type="checkbox" name="music-genre" value="hip-hop"> Hip-hop</label><br>
+  <label><input type="checkbox" name="music-genre" value="jazz"> Jazz</label><br>
+  <label><input type="checkbox" name="music-genre" value="rock"> Rock</label><br>
+  <label><input type="checkbox" name="music-genre" value="classical"> Classical Music</label><br>
+  <label><input type="checkbox" name="music-genre" value="country"> Country</label><br><br>
+
+  <input type="submit" value="Submit">
+  <input type="reset" id="resetButton" value="Reset">
+</form>
+
+<!-- Section to display error messages -->
+<div id="errorMessages"></div>
+
+</body>
+</html>
