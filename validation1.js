@@ -57,7 +57,7 @@ function validateInput() {
   if (!valid) {
     errorMessagesDiv.innerHTML = errorMessages;
   }
-  return valid; // Submit if valid is true
+  return valid;
 }
 document.getElementById("resetButton").addEventListener("click", function() {
   document.getElementById("errorMessages").innerHTML = '';
